@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
 
 function HomePage() {
     return (
-        <Fragment>
+        <main>
             <Banner />
             <section className="features">
                 <h2 className="sr-only">Features</h2>
@@ -19,7 +19,7 @@ function HomePage() {
                     />
                 ))}
             </section>
-        </Fragment>
+        </main>
     )
 }
 
