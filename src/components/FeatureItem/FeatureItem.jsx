@@ -1,17 +1,24 @@
 import 'components/FeatureItem/FeatureItem.css';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 
+/**
+ *
+ * @param imgSrc
+ * @param imgAlt
+ * @param title
+ * @param description
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function FeatureItem({imgSrc, imgAlt, title, description}) {
     return (
-        <Fragment>
-            <article className='featureItem'>
-                <img src={imgSrc} className='featureIcon' alt={imgAlt}/>
-                <h3 className='featureItemTitle'>{title}</h3>
-                <p>{description}</p>
-            </article>
-        </Fragment>
-    )
+        <article className='featureItem'>
+            <img src={imgSrc} className='featureIcon' alt={imgAlt}/>
+            <h3 className='featureItemTitle'>{title}</h3>
+            <p>{description}</p>
+        </article>
+    );
 }
 
 FeatureItem.propTypes = {

@@ -3,19 +3,27 @@ import 'components/Card/Card.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+/**
+ *
+ * @param title
+ * @param amount
+ * @param description
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function Card({title, amount, description}) {
     return (
         <section className='account'>
-            <div className='accountContentWrapper'>
+            <article className='accountContentWrapper'>
                 <h3 className='accountTitle'>{title}</h3>
                 <p className='accountAmount'>{amount}</p>
                 <p className='accountAmountDescription'>{description}</p>
-            </div>
+            </article>
             <div className='accountContentWrapper cta'>
                 <Button className='transactionButton' text='View transactions'/>
             </div>
         </section>
-    )
+    );
 }
 
 Card.propTypes = {

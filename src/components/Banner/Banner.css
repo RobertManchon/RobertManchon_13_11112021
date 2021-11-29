@@ -1,5 +1,5 @@
 .hero {
-    background-image: url(src/assets/banner/treeBanner.jpeg);
+    background-image: url(/src/assets/treeBanner.jpeg);
     background-position: 0 -3.125rem;
     background-repeat: no-repeat;
     background-size: cover;

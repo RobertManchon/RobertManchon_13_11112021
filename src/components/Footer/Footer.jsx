@@ -1,14 +1,17 @@
 import 'components/Footer/Footer.css';
-import React, { Fragment } from 'react';
+import React from 'react';
 
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function Footer() {
-return (
-    <Fragment>
+    return (
         <footer className='footer'>
-            <p className='footerText'>Copyright 2020 Argent Bank</p>
+            <p className='footerText'>Copyright 2021 Argent Bank</p>
         </footer>
-    </Fragment>
-)
+    );
 }
 
 export default Footer;
