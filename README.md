@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Project  13 - Argent Bank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This codebase contains the code needed to run Argent Bank website.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Prerequisites
 
-### `yarn start`
+Argent Bank uses the following tech stack:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Node.js v12](https://nodejs.org/en/)
+- [MongoDB Community Server v5](https://www.mongodb.com/try/download/community)
+- [Yarn v1](https://yarnpkg.com/getting-started/install)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Please make sure you have the right versions and download all packages. You can verify this by using the following commands in your terminal:
 
-### `yarn test`
+```bash
+# Check Node.js version
+node --version
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Check Mongo version
+mongo --version
 
-### `yarn build`
+# Check Yarn version
+yarn --version
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repo onto your computer
+1. Open a terminal window in the cloned project
+1. Run the following commands:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Install dependencies
+yarn install
 
-### `yarn eject`
+# Start local dev server
+yarn dev:server
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Populate database with two users
+yarn populate-db
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Start App
+yarn dev:client
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The API is served at [http://locahost:3001](http://locahost:3001) and you will now have two users in your MongoDB database!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The App is running at [http://localhost:3000](http://locahost:3000).
 
-## Learn More
+## Populated Database Data
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Once you run the `populate-db` script, you should have two users in your database:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Tony Stark
 
-### Code Splitting
+- First Name: `Tony`
+- Last Name: `Stark`
+- Email: `tony@stark.com`
+- Password: `password123`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Steve Rogers
 
-### Analyzing the Bundle Size
+- First Name: `Steve`,
+- Last Name: `Rogers`,
+- Email: `steve@rogers.com`,
+- Password: `password456`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Back end API Documentation
 
-### Making a Progressive Web App
+To learn more about how the Back End API works, once you have started your local environment, you can visit: http://localhost:3001/api-docs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Front end API Documentation
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To learn more about how the FrontEnd API works, once you have started your local environment, you can visit: http://localhost:3000/api-docs

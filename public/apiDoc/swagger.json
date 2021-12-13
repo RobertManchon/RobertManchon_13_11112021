@@ -1,0 +1,668 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Possible API endpoints for phase two of Argent Bank project.",
+    "version": "1.0.0",
+    "title": "Argent Bank API documentation",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/RobertManchon/argentBank/1.0.0",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/access-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Request a JWT to authenticate user",
+        "description": "Return a JWT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginPayload"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated successfully",
+            "schema": {
+              "$ref": "#/definitions/AuthenticationResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Fields"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register a new user",
+        "description": "Return a JWT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterPayload"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Registered Successfully",
+            "schema": {
+              "$ref": "#/definitions/AuthenticationResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Fields"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user profile",
+        "description": "Return user profile",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Attach Bearer JWT token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile retrieved successully",
+            "schema": {
+              "$ref": "#/definitions/UserProfile"
+            }
+          },
+          "401": {
+            "description": "Invalid token"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update user profile",
+        "description": "Return user updated profile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Attach Bearer JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update user profile attributes",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartialUserProfile"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile updated successfully",
+            "schema": {
+              "$ref": "#/definitions/UserProfile"
+            }
+          },
+          "400": {
+            "description": "Invalid Fields"
+          },
+          "401": {
+            "description": "Invalid token"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "get": {
+        "tags": [
+          "User Accounts"
+        ],
+        "summary": "Summary of user's accounts",
+        "description": "Returns all accounts of a user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Attach Bearer JWT token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User summary accounts retrieved succesfully",
+            "schema": {
+              "$ref": "#/definitions/Accounts_Response"
+            }
+          },
+          "401": {
+            "description": "Invalid Token"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/transactions": {
+      "get": {
+        "tags": [
+          "User Accounts Transactions"
+        ],
+        "summary": "Transactions for the selected account",
+        "description": "Get account transactions",
+        "operationId": "userTransaction",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Attach Bearer JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "ID of the account to get",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User account transactions retrieved succesfully",
+            "schema": {
+              "$ref": "#/definitions/Transactions_Response"
+            }
+          },
+          "400": {
+            "description": "Invalid Fields"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/accounts/{accountId}/transactions/{transactionId}": {
+      "get": {
+        "tags": [
+          "User Account Transactions Details"
+        ],
+        "summary": "Transaction details for the selected transaction ID",
+        "description": "Get details for the selected transaction",
+        "operationId": "userTransactionDetail",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Attach Bearer JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "ID of the account to get",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "description": "ID of the transaction to get",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User transaction details retrieved succesfully",
+            "schema": {
+              "$ref": "#/definitions/Transaction_Details_Response"
+            }
+          },
+          "400": {
+            "description": "Invalid Fields"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User Account Transactions Details"
+        ],
+        "summary": "Update transaction details",
+        "description": "Update details for the selected transaction",
+        "operationId": "userTransactionDetailUpdate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Attach Bearer JWT token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "ID of the account to get",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "description": "ID of the transaction to get",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update transaction details",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Transaction_Details"
+            }
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction details updated succesfully",
+            "schema": {
+              "$ref": "#/definitions/Transaction_Details_Response"
+            }
+          },
+          "400": {
+            "description": "Invalid Fields"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "RegisterPayload": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "user email"
+        },
+        "password": {
+          "type": "string",
+          "description": "user password"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "user first name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "user last name"
+        }
+      }
+    },
+    "LoginPayload": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "user email"
+        },
+        "password": {
+          "type": "string",
+          "description": "user password"
+        }
+      }
+    },
+    "AuthenticationResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "PartialUserProfile": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    },
+    "Accounts_Response": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string",
+          "example": "User transactions retrieved succesfully"
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Account"
+          }
+        }
+      }
+    },
+    "Transactions_Response": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string",
+          "example": "User transactions retrieved succesfully"
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction"
+          }
+        }
+      }
+    },
+    "Transaction_Details_Response": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string",
+          "example": "User transaction details retrieved succesfully"
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Transaction_Details"
+          }
+        }
+      }
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "x9348",
+          "description": "account ID"
+        },
+        "name": {
+          "type": "string",
+          "example": "Argent Bank Checking"
+        },
+        "balance": {
+          "type": "number",
+          "format": "float",
+          "example": 9127.69
+        },
+        "currency": {
+          "type": "string",
+          "example": "dollar"
+        },
+        "transaction": {
+          "$ref": "#/definitions/Account_transaction"
+        }
+      }
+    },
+    "Transaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "x8349tr467854",
+          "description": "Transaction ID"
+        },
+        "description": {
+          "type": "string",
+          "example": "John Hopkins Hospital"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "example": 3
+        },
+        "account_balance": {
+          "type": "number",
+          "format": "float",
+          "example": 2082.79
+        },
+        "type": {
+          "type": "string",
+          "example": "credit card"
+        },
+        "category": {
+          "type": "string",
+          "example": "Health"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "2021-11-27 14:16:55"
+        },
+        "transaction": {
+          "$ref": "#/definitions/Transaction_transaction"
+        }
+      }
+    },
+    "Transaction_Details": {
+      "type": "object",
+      "properties": {
+        "transactionType": {
+          "type": "string",
+          "description": "Transaction type"
+        },
+        "category": {
+          "type": "string",
+          "description": "Transaction category"
+        },
+        "note": {
+          "type": "string",
+          "description": "User's notes for the transaction"
+        }
+      }
+    },
+    "Account_transaction": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "description": "Account Creation Date"
+        },
+        "name": {
+          "type": "string",
+          "example": "Bank Account"
+        },
+        "balance": {
+          "type": "number",
+          "example": 1234
+        },
+        "currency": {
+          "type": "string",
+          "example": "€"
+        }
+      }
+    },
+    "Transaction_transaction": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "description": "Transaction date"
+        },
+        "description": {
+          "type": "string",
+          "description": "Transaction description"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Transaction amount"
+        },
+        "balance": {
+          "type": "number",
+          "description": "Account balance after transaction"
+        }
+      }
+    }
+  }
+}

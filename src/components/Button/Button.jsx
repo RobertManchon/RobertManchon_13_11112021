@@ -10,7 +10,7 @@ import React from 'react';
  * @returns {JSX.Element}
  * @constructor
  */
-function Button({ className, text, action}) {
+const Button = ({ className, text, action}) => {
     return (
         <button className={className} onClick={action} >
             {text}

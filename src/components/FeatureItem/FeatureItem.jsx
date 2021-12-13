@@ -11,7 +11,7 @@ import React from 'react';
  * @returns {JSX.Element}
  * @constructor
  */
-function FeatureItem({imgSrc, imgAlt, title, description}) {
+const FeatureItem = ({imgSrc, imgAlt, title, description}) => {
     return (
         <article className='featureItem'>
             <img src={imgSrc} className='featureIcon' alt={imgAlt}/>

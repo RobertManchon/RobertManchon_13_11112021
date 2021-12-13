@@ -11,7 +11,8 @@ import React from 'react';
  * @returns {JSX.Element}
  * @constructor
  */
-function Card({title, amount, description}) {
+
+const Card = ({title, amount, description}) => {
     return (
         <section className='account'>
             <article className='accountContentWrapper'>

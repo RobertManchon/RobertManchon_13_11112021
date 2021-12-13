@@ -1,6 +1,6 @@
 .hero {
     background-image: url(/src/assets/treeBanner.jpeg);
-    background-position: 0 -3.125rem;
+    background-position: 0 -3.12rem;
     background-repeat: no-repeat;
     background-size: cover;
     height: 18.75rem;
@@ -37,8 +37,8 @@
     .heroContent {
         margin: 2rem;
         position: absolute;
-        right: 3.125rem;
-        top: 3.125rem;
+        right: 3.12rem;
+        top: 3.12rem;
         width: 18.75rem;
     }
 

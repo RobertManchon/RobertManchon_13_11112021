@@ -6,7 +6,7 @@ import React from 'react';
  * @returns {JSX.Element}
  * @constructor
  */
-function Banner() {
+const Banner = () => {
     return (
         <section className='hero'>
             <article className='heroContent'>

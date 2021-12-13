@@ -6,10 +6,15 @@ import Login from 'pages/Login/Login';
 import LogInJWT from 'utils/storage/LogInJWT';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { routes, routesApiDocs } from 'router/routes';
-import { SubRoutes } from 'router/SubRoutes';
+import { routes, MatchedRoutes, routesApiDocs } from 'router/routes';
 
-function App(props) {
+/**
+ *
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const App = (props) => {
     // to establish the path to the API documentation
     routesApiDocs();
     // to log in the user using the JWT Token
@@ -25,7 +30,7 @@ function App(props) {
                             ? (
                                 <Login key={index} exact path={route.path} />
                             ) : (
-                                <SubRoutes key={index} {...route} />
+                                <MatchedRoutes key={index} {...route} />
                             )
                     )}
                 </Switch>
@@ -41,10 +46,6 @@ const mapStateToProps = state => {
     };
 }
 
-/**
- *
- * @type {{connected: Validator<NonNullable<boolean>> | Validator<NonNullable<T>>}}
- */
 App.propTypes = {
     connected : PropTypes.bool.isRequired,
 }

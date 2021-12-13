@@ -6,7 +6,7 @@ import React from 'react';
  * @returns {JSX.Element}
  * @constructor
  */
-function Footer() {
+const Footer = () => {
     return (
         <footer className='footer'>
             <p className='footerText'>Copyright 2021 Argent Bank</p>

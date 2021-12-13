@@ -1,0 +1,12 @@
+.headerProfileInput {
+    border: none;
+    border-radius: .31rem;
+    font-size: 1.1rem;
+    margin: .62rem;
+    padding: .62rem;
+}
+
+.inputWrapper input {
+    font-size: 1.2rem;
+    padding: .31rem;
+}
